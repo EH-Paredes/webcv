@@ -165,3 +165,10 @@ footer {
         width: 100%;
     }
 }
+
+.steam-logo {
+    width: 60%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+}
