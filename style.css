@@ -137,7 +137,7 @@ section strong {
 }
 
 ul {
-    list-style: none; /* Quitamos los cuadrados feos por defecto */
+    list-style: none; 
 }
 
 ul li {
