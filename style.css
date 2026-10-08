@@ -1,174 +1,323 @@
+/* ===========================
+   Variables y Reset Global
+   =========================== */
+:root {
+    --bg-primary: #090d16;
+    --bg-secondary: #111827;
+    --bg-card: #162032;
+    --border-color: #223049;
+    --accent-blue: #38bdf8;
+    --accent-blue-hover: #0ea5e9;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --transition: all 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #0f172a;
-    background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" fill="transparent"/><path d="M0 0 L40 40 M40 0 L0 40" stroke="%23354de8" stroke-width="0.5"/></svg>');
-    background-size: 40px 40px;
-    color: #f4f6f8;
-    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.7;
 }
 
-
-
-/* Header */
+/* ===========================
+   Header
+   =========================== */
 header {
-    background-color: #1f2933;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
     color: white;
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
 }
 
 header p {
-    font-size: 1.1rem;
-    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    font-weight: 500;
 }
 
-/* Navigation */
+/* ===========================
+   Navegación Fija (Sticky)
+   =========================== */
 nav {
-    background-color: #111827;
+    background-color: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 15px;
+    gap: 40px;
+    padding: 18px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
-    color: white;
+    color: var(--text-muted);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: var(--accent-blue);
 }
 
-/* Sections */
+/* ===========================
+   Secciones Generales
+   =========================== */
 section {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 60px auto;
     padding: 0 20px;
 }
 
 section h2 {
-    margin-bottom: 20px;
-    border-bottom: 3px solid #2563eb;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: white;
+    border-bottom: 3px solid var(--accent-blue);
     display: inline-block;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
 }
 
-/* Skills */
-ul {
-    list-style: square inside;
+section p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 15px;
 }
 
-/* Skills container */
+section strong {
+    color: var(--text-main);
+}
+
+/* ===========================
+   Habilidades y Herramientas
+   =========================== */
 .skills-container {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .skills-block {
     flex: 1;
-    min-width: 250px;
+    min-width: 260px;
+    background-color: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
 .skills-block h3 {
+    margin-bottom: 15px;
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+}
+
+ul {
+    list-style: none; /* Quitamos los cuadrados feos por defecto */
+}
+
+ul li {
+    position: relative;
+    padding-left: 20px;
     margin-bottom: 10px;
-    color: #2563eb;
+    color: var(--text-muted);
 }
 
-/* Projects */
+ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* Sección Herramientas (programs) */
+#programs ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+#programs li {
+    background-color: var(--bg-secondary);
+    padding: 12px 18px 14px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 0;
+}
+#programs li::before {
+    content: "•";
+    color: var(--accent-blue);
+    margin-left: 10px; 
+    
+
+}
+
+/* ===========================
+   Proyectos
+   =========================== */
 .project {
-    background-color: white;
-    color: #1f2933; /* texto oscuro para que se vea sobre fondo blanco */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
 }
 
+.project:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-3px);
+}
 
 .project-content {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .project-text {
-    flex: 1;             /* Ocupa la mitad del ancho del proyecto */
-    min-width: 250px;
+    flex: 1;
+    min-width: 260px;
+}
+
+.project-text h3 {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.project-text p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    margin-bottom: 20px;
 }
 
 .project-image {
-    flex: 1;             /* Ocupa la otra mitad del proyecto */
-    min-width: 250px;
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .project-image img {
-    width: 100%;         /* Imagen ocupa todo el ancho del bloque */
-    height: auto;        /* Mantiene proporción */
-    border-radius: 6px;
+    width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
     object-fit: cover;
+    border: 1px solid var(--border-color);
 }
 
+.steam-logo {
+    width: 50% !important;
+    max-width: 150px;
+    margin: 0 auto;
+    object-fit: contain !important;
+}
+
+/* Botón de enlace en proyectos */
 .project a {
     display: inline-block;
-    margin-top: 10px;
-    color: #1f2933; 
+    background-color: var(--accent-blue);
+    color: var(--bg-primary);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
     text-decoration: none;
+    transition: var(--transition);
 }
 
 .project a:hover {
-    text-decoration: underline;
+    background-color: var(--accent-blue-hover);
+    text-decoration: none;
 }
 
-/* Contact */
+/* ===========================
+   Contacto
+   =========================== */
+#contact {
+    background-color: var(--bg-secondary);
+    padding: 40px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    
+    
+    max-width: 860px;
+    width: calc(100% - 40px); 
+    margin: 60px auto; 
+}
+
+#contact p {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
 #contact a {
-    color: #2563eb;
+    color: var(--accent-blue);
     text-decoration: none;
+    font-weight: 500;
 }
 
 #contact a:hover {
     text-decoration: underline;
 }
 
-/* Footer */
+/* ===========================
+   Footer
+   =========================== */
 footer {
-    background-color: #1f2933;
-    color: white;
+    background-color: var(--bg-secondary);
+    color: var(--text-muted);
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 30px;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
 }
 
-/* Responsive: Móviles */
+/* ===========================
+   Responsive: Móviles
+   =========================== */
 @media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    nav {
+        gap: 15px;
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
     .project-content {
         flex-direction: column;
     }
-
-    .project-image img {
-        width: 100%;
-    }
-}
-
-.steam-logo {
-    width: 60%;
-    max-width: 200px;
-    display: block;
-    margin: 0 auto;
 }
